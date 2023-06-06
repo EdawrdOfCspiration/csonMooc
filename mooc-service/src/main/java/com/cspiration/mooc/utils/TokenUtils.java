@@ -35,20 +35,20 @@ public class TokenUtils {
                 .sign(algorithm);
     }
 
-//    public static Long verifyToken(String token) throws NoSuchAlgorithmException {
-//        try{
-//            RSA256Key rsa256Key = SecretKeyUtil.generateRSA256Key();
-//            Algorithm algorithm = Algorithm.RSA256(rsa256Key.getPublicKey(), rsa256Key.getPrivateKey());
-//
-//            JWTVerifier verifier = JWT.require(algorithm).build();
-//            DecodedJWT jwt = verifier.verify(token);
-//            String userId = jwt.getKeyId();
-//            return Long.valueOf(userId);
-//        } catch (TokenExpiredException e) {
-//            throw new ConditionException("555", "token过期！");
-//        } catch (Exception e) {
-//            throw new ConditionException("非法用户token");
-//        }
-//
-//    }
+    public static Long verifyToken(String token) throws NoSuchAlgorithmException {
+        try{
+            RSA256Key rsa256Key = SecretKeyUtil.generateRSA256Key();
+            Algorithm algorithm = Algorithm.RSA256(rsa256Key.getPublicKey(), rsa256Key.getPrivateKey());
+
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT jwt = verifier.verify(token);
+            String userId = jwt.getKeyId();
+            return Long.valueOf(userId);
+        } catch (TokenExpiredException e) {
+            throw new ConditionException("555", "token过期！");
+        } catch (Exception e) {
+            throw new ConditionException("非法用户token");
+        }
+
+    }
 }
