@@ -51,4 +51,8 @@ public class TokenUtils {
         }
 
     }
+
+    public static Integer test() {
+        return 0;
+    }
 }
